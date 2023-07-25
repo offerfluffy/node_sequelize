@@ -8,7 +8,11 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      // define association here
+      Task.belongsTo(models.User, {
+        foreignKey: "userId",
+        onDelete: "cascade",
+        onUpdate: "cascade",
+      });
     }
   }
   Task.init(
@@ -25,6 +29,7 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.BOOLEAN,
         allowNull: false,
         field: "is_done",
+        defaultValue: false,
         validate: {
           notNull: true,
           notEmpty: true,

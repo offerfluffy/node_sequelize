@@ -1,7 +1,8 @@
 const express = require("express");
 const UserController = require("../controllers/userController");
+const TaskController = require("../controllers/taskController");
 
-const userRouter = express.Router(); 
+const userRouter = express.Router();
 
 userRouter
   .route("/users")
@@ -13,5 +14,7 @@ userRouter
   .get(UserController.getUser)
   .put(UserController.updateUser)
   .delete(UserController.deleteUser);
+
+userRouter.post("/users/:userId/tasks", TaskController.createTask);
 
 module.exports = userRouter;
