@@ -1,20 +1,6 @@
-const express = require("express");
-const UserController = require("../controllers/userController");
-const TaskController = require("../controllers/taskController");
+const rootRouter = require("express").Router();
+const userRouter = require("./userRouter");
 
-const userRouter = express.Router();
+rootRouter.use("/users", userRouter);
 
-userRouter
-  .route("/users")
-  .get(UserController.getUsers)
-  .post(UserController.createUser);
-
-userRouter
-  .route("/users/:userId")
-  .get(UserController.getUser)
-  .put(UserController.updateUser)
-  .delete(UserController.deleteUser);
-
-userRouter.post("/users/:userId/tasks", TaskController.createTask);
-
-module.exports = userRouter;
+module.exports = rootRouter;
