@@ -28,7 +28,7 @@ module.exports.getUser = async (req, res, next) => {
       returning: true,
     });
 
-    res.send({ data: user });
+    res.status(200).send({ data: user });
   } catch (err) {
     next(err);
   }
