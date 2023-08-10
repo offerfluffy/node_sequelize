@@ -1,4 +1,5 @@
 const express = require("express");
+const cors = require("cors");
 const router = require("./routers");
 const CONSTANS = require("./constant");
 const ErrorHandlers = require("./middlewares/errors");
@@ -6,6 +7,8 @@ const ErrorHandlers = require("./middlewares/errors");
 const app = express();
 
 const bodyParser = express.json();
+
+app.use(cors());
 
 app.use(bodyParser);
 

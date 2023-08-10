@@ -63,7 +63,7 @@ module.exports = (sequelize, DataTypes) => {
       isMale: { type: DataTypes.BOOLEAN, field: "is_male" },
       birthday: {
         type: DataTypes.DATEONLY,
-        allowNull: false,
+        allowNull: true,
         validate: {
           isDate: true,
           isAfter: "1900-01-01",
